@@ -60,6 +60,7 @@ class MyApp extends StatelessWidget {
           ),
           themeMode: themeProvider.themeMode,
           home: const LoginScreen(),
+          debugShowCheckedModeBanner: false,
         );
       },
     );

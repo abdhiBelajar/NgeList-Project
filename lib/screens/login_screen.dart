@@ -5,6 +5,7 @@ import 'package:flutter_application_1/screens/home_screen.dart';
 import 'package:flutter_application_1/screens/register_screen.dart';
 import 'package:flutter_application_1/services/auth_service.dart';
 import 'package:flutter_application_1/services/database_helper.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -76,9 +77,6 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Login'),
-      ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Form(
@@ -86,6 +84,21 @@ class _LoginScreenState extends State<LoginScreen> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              Container(
+                margin: const EdgeInsets.only(bottom: 32),
+                height: 120,
+                width: 200,
+                alignment: Alignment.center,
+                child: Text(
+                  'NgeList',
+                  style: GoogleFonts.pacifico(
+                    fontSize: 40,
+                    color: Colors.deepPurple,
+                    fontWeight: FontWeight.bold,
+                  ),
+                  textAlign: TextAlign.center,
+                ),
+              ),
               TextFormField(
                 controller: _emailController,
                 decoration: const InputDecoration(
