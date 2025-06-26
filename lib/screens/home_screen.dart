@@ -135,6 +135,43 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
         title: Text('Hi, ${widget.user.email ?? 'User'}'),
         actions: [
+          PopupMenuButton<dynamic>(
+            onSelected: (value) {
+              if (value is TaskFilter) {
+                Provider.of<TaskProvider>(context, listen: false).setFilter(value);
+              } else if (value is TaskSortOption) {
+                Provider.of<PreferenceProvider>(context, listen: false)
+                    .setSortOption(value);
+              }
+            },
+            itemBuilder: (context) => [
+              const PopupMenuItem(
+                value: TaskFilter.all,
+                child: Text('Filter: Semua'),
+              ),
+              const PopupMenuItem(
+                value: TaskFilter.completed,
+                child: Text('Filter: Selesai'),
+              ),
+              const PopupMenuItem(
+                value: TaskFilter.pending,
+                child: Text('Filter: Belum Selesai'),
+              ),
+              const PopupMenuDivider(),
+              const PopupMenuItem(
+                value: TaskSortOption.none,
+                child: Text('Urutkan: Normal'),
+              ),
+              const PopupMenuItem(
+                value: TaskSortOption.byTitle,
+                child: Text('Urutkan: Judul'),
+              ),
+              const PopupMenuItem(
+                value: TaskSortOption.byDueDate,
+                child: Text('Urutkan: Tanggal'),
+              ),
+            ],
+          ),
           IconButton(
             icon: const Icon(Icons.settings),
             onPressed: () {
